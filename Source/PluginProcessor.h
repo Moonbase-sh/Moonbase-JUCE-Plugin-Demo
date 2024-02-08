@@ -66,6 +66,8 @@ private:
         Using this macro expects, that:
         - you've defined the aforementioned ProjectInfo fields in your Projucer project.
         - you've added a 'moonbase_api_config.json' file as Binary Source to your Projucer project.
+
+        For other ways to initialise the Moonbase Client API, see the Macros.h file in the Moonbase JUCEClient module (moonbase_JUCEClient/Source/Macros.h)
     */
     //==============================================================================
 
