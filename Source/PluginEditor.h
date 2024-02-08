@@ -29,7 +29,7 @@ private:
     // access the processor object that created it.
     MoonbasePluginDemoAudioProcessor& audioProcessor;
 
-    MOONBASE_DECLARE_LICENSING_USING_JUCE_PROJECTINFO
-    
+
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MoonbasePluginDemoAudioProcessorEditor)
 };
