@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="dGUsLZ" name="Moonbase Plugin Demo" projectType="audioplug"
               useAppConfig="1" addUsingNamespaceToJuceHeader="1" jucerFormatVersion="1"
-              companyName="Moonbase" companyWebsite="https://moonbase.sh" displaySplashScreen="1"
+              companyName="Demo Co." companyWebsite="https://moonbase.sh" displaySplashScreen="1"
               pluginFormats="buildAU,buildStandalone,buildVST3" pluginManufacturerCode="Moon"
               pluginCode="PlgD">
   <MAINGROUP id="lfn1cF" name="Moonbase Plugin Demo">

@@ -13,8 +13,12 @@
 MoonbasePluginDemoAudioProcessorEditor::MoonbasePluginDemoAudioProcessorEditor (MoonbasePluginDemoAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
+    addAndMakeVisible (showActivationUiButton);
+    showActivationUiButton.onClick = [&]()
+    {
+        MOONBASE_SHOW_ACTIVATION_UI;
+    };
+
     setSize (800, 600);
 }
 
@@ -27,14 +31,13 @@ void MoonbasePluginDemoAudioProcessorEditor::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void MoonbasePluginDemoAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    MOONBASE_RESIZE_ACTIVATION_UI;
+    
+    Rectangle<int> activationUiButtonArea (250, 30);
+    activationUiButtonArea.setCentre (getLocalBounds ().getCentre ());
+    showActivationUiButton.setBounds (activationUiButtonArea);
 }
