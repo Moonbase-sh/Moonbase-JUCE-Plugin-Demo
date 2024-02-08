@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="dGUsLZ" name="Moonbase Plugin Demo" projectType="audioplug"
+              useAppConfig="0" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+  <MAINGROUP id="lfn1cF" name="Moonbase Plugin Demo">
+    <GROUP id="{0A978C38-47D9-FDBD-3E38-1D91ED928004}" name="Source">
+      <FILE id="rWuXZp" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="pzyD59" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="Bsg0f7" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="RwRAbY" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_product_unlocking" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="moonbase_JUCEClient" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="Moonbase Plugin Demo"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="Moonbase Plugin Demo"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="moonbase_JUCEClient" path="Submodules"/>
+        <MODULEPATH id="juce_product_unlocking" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="Submodules/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2022 targetFolder="Builds/VisualStudio2022">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="moonbase_JUCEClient" path="Submodules"/>
+        <MODULEPATH id="juce_product_unlocking" path="Submodules/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="Submodules/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2022>
+  </EXPORTFORMATS>
+</JUCERPROJECT>

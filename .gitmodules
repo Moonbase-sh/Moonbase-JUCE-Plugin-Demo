@@ -1,0 +1,6 @@
+[submodule "Submodules/JUCE"]
+	path = Submodules/JUCE
+	url = https://github.com/juce-framework/JUCE
+[submodule "Submodules/moonbase_JUCEClient"]
+	path = Submodules/moonbase_JUCEClient
+	url = https://github.com/Moonbase-sh/moonbase_JUCEClient
