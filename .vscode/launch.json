@@ -1,0 +1,33 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(MacOS) Debug Standalone",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "Build Plugins: Debug",
+            "program": "${workspaceFolder}/Builds/MacOSX/build/Debug/Moonbase Plugin Demo.app",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        },
+        {
+            "name": "(Windows) Debug Standalone",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Build Plugins: Debug",
+            "program": "${workspaceFolder}/Builds/VisualStudio2022/x64/Debug/Standalone App/Moonbase Plugin Demo.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal"
+        },
+    ]
+}
