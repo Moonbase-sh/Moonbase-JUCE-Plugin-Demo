@@ -22,7 +22,7 @@
             "type": "cppvsdbg",
             "request": "launch",
             "preLaunchTask": "Build Plugins: Debug",
-            "program": "${workspaceFolder}/Builds/VisualStudio2022/x64/Debug/Standalone App/Moonbase Plugin Demo.exe",
+            "program": "${workspaceFolder}/Builds/VisualStudio2022/x64/Debug/Standalone Plugin/Moonbase Plugin Demo.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

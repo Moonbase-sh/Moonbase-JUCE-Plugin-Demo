@@ -27,6 +27,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "msys" ]]; then
     PROJUCER="$BASEDIR/Submodules/JUCE/extras/Projucer/Builds/VisualStudio2022/x64/Release/App/Projucer.exe"
     BUILD_CMD="MSBuild.exe \"${PRODUCTNAME}_SharedCode.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
+    BUILD_CMD+=" && MSBuild.exe \"${PRODUCTNAME}_VST3ManifestHelper.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
     BUILD_CMD+=" && MSBuild.exe \"${PRODUCTNAME}_VST3.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
    
     if [ $DO_STANDALONE_BUILD -eq 1 ]; then
