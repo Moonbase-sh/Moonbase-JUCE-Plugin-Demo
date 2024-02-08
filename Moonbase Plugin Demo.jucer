@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="dGUsLZ" name="Moonbase Plugin Demo" projectType="audioplug"
-              useAppConfig="0" addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              useAppConfig="1" addUsingNamespaceToJuceHeader="1" jucerFormatVersion="1"
+              companyName="Moonbase" companyWebsite="https://moonbase.sh" displaySplashScreen="1"
+              pluginFormats="buildAU,buildStandalone,buildVST3" pluginManufacturerCode="Moon"
+              pluginCode="PlgD">
   <MAINGROUP id="lfn1cF" name="Moonbase Plugin Demo">
+    <GROUP id="{5EC5F814-84AB-59FD-56DF-D9F18FAEEE03}" name="Resources">
+      <FILE id="zI0B1f" name="moonbase_api_config.json" compile="0" resource="1"
+            file="Resources/moonbase_api_config.json"/>
+    </GROUP>
     <GROUP id="{0A978C38-47D9-FDBD-3E38-1D91ED928004}" name="Source">
       <FILE id="rWuXZp" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
