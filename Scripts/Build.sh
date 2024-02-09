@@ -10,6 +10,8 @@ BASEDIR="$(realpath $(dirname "$0")/..)"
 JUCERPROJ="$BASEDIR/$PRODUCTNAME.jucer"
 
 "$BASEDIR/Scripts/BuildProjucer.sh" || exit $?
+"$BASEDIR/Submodules/moonbase_JUCEClient/Assets/Build.sh" || exit $?
+
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     PROJUCER="$BASEDIR/Submodules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer"
