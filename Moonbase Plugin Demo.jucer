@@ -6,6 +6,10 @@
               pluginFormats="buildAU,buildStandalone,buildVST3" pluginManufacturerCode="Moon"
               pluginCode="PlgD">
   <MAINGROUP id="lfn1cF" name="Moonbase Plugin Demo">
+    <GROUP id="{2D8D8BBD-958A-ECE7-E1CA-21305699B114}" name="Assets">
+      <FILE id="MV1oH6" name="MoonbaseLogo.svg" compile="0" resource="1"
+            file="Assets/MoonbaseLogo.svg"/>
+    </GROUP>
     <GROUP id="{5EC5F814-84AB-59FD-56DF-D9F18FAEEE03}" name="Resources">
       <FILE id="zI0B1f" name="moonbase_api_config.json" compile="0" resource="1"
             file="Resources/moonbase_api_config.json"/>

@@ -13,6 +13,34 @@
 
 //==============================================================================
 /**
+ * The default moonbase ui integration allows to set a company logo as a component, 
+ * so you can define custom animations and behaviours.
+ * 
+ * You can change the ANIMATE_COMPANY_LOGO flag below to 1 to enable an example animation that makes the logo shiver.
+*/
+
+#define ANIMATE_COMPANY_LOGO 0
+
+class CompanyLogo : public Component, 
+                    private Timer
+{
+public:
+    CompanyLogo ();
+
+private:
+    std::unique_ptr<Drawable> logo;
+    void paint (Graphics& g) override;  
+    
+    void timerCallback () override;
+    LinearSmoothedValue<float> jitterX { 0.f };
+    LinearSmoothedValue<float> jitterY { 0.f };
+    Random random;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CompanyLogo)
+};
+
+//==============================================================================
+/**
 */
 class MoonbasePluginDemoAudioProcessorEditor  : public juce::AudioProcessorEditor
 {

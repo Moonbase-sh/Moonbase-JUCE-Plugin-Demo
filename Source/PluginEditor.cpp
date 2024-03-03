@@ -10,6 +10,45 @@
 #include "PluginEditor.h"
 
 //==============================================================================
+//==============================================================================
+CompanyLogo::CompanyLogo ()
+{
+    logo = Drawable::createFromImageData (BinaryData::MoonbaseLogo_svg, 
+                                          BinaryData::MoonbaseLogo_svgSize);
+
+    #if ANIMATE_COMPANY_LOGO
+        jitterX.reset (15);
+        jitterY.reset (15);
+        startTimerHz (30);
+    #endif
+}
+
+void CompanyLogo::timerCallback () 
+{
+    // this is just a simple example of how to animate the logo... this particular code makes the logo shiver
+    const auto jitterRange = 0.1f;
+    jitterX.setTargetValue (jmap (random.nextFloat(), 0.f, 1.f, -jitterRange, jitterRange));
+    jitterY.setTargetValue (jmap (random.nextFloat(), 0.f, 1.f, -jitterRange, jitterRange));
+    repaint ();
+}
+
+void CompanyLogo::paint (Graphics& g)
+{
+    const auto width = getWidth ();
+    const auto height = getHeight ();
+    auto area = getLocalBounds().toFloat().reduced (height * 0.1f);
+    
+    #if ANIMATE_COMPANY_LOGO
+        const auto currentJitterX = jitterX.getNextValue ();
+        const auto currentJitterY = jitterY.getNextValue ();
+        area = area.translated (width * currentJitterX, height * currentJitterY);
+    #endif
+    
+    if (logo != nullptr)
+        logo->drawWithin (g, area, RectanglePlacement::centred, 1.0f);
+}
+//==============================================================================
+//==============================================================================
 MoonbasePluginDemoAudioProcessorEditor::MoonbasePluginDemoAudioProcessorEditor (MoonbasePluginDemoAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
@@ -23,6 +62,32 @@ MoonbasePluginDemoAudioProcessorEditor::MoonbasePluginDemoAudioProcessorEditor (
         */
         MOONBASE_SHOW_ACTIVATION_UI;
     };
+
+    /*
+        Moonbase Activation UI member initialization
+
+        Use this macro to initialize the Moonbase Activation UI details.
+    */
+    jassert (activationUI != nullptr);
+    if (activationUI != nullptr)
+    {
+        // There are a max of 2 lines of text on the welcome screen, define them here
+        activationUI->setWelcomePageText ("Weightless", "License Management");
+
+        // Set the spinner logo, this is the little icon inside the spinner, when waiting for web responses
+        activationUI->setSpinnerLogo (Drawable::createFromImageData (BinaryData::MoonbaseLogo_svg, 
+                                                                     BinaryData::MoonbaseLogo_svgSize));
+
+        // Scale the spinner logo as required for your asset if needed. See Submodules/moonbase_JUCEClient/Assets/Source/SVG/OverlayAssets for ideal assets.
+        // activationUI->setSpinnerLogoScale (0.5f);
+        
+        // Set the company logo, this is the logo that is displayed on the welcome screen and the activated info screen
+        activationUI->setCompanyLogo (std::make_unique<CompanyLogo> ());
+
+        // Scale the company logo as required for your asset if needed. 
+        // activationUI->setCompanyLogoScale ((0.25f));
+       
+    }
 
     setSize (800, 600);
 }
@@ -47,7 +112,7 @@ void MoonbasePluginDemoAudioProcessorEditor::resized()
         
     */
     MOONBASE_RESIZE_ACTIVATION_UI;
-    
+
     Rectangle<int> activationUiButtonArea (250, 30);
     activationUiButtonArea.setCentre (getLocalBounds ().getCentre ());
     showActivationUiButton.setBounds (activationUiButtonArea);
