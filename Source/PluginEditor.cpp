@@ -16,6 +16,11 @@ MoonbasePluginDemoAudioProcessorEditor::MoonbasePluginDemoAudioProcessorEditor (
     addAndMakeVisible (showActivationUiButton);
     showActivationUiButton.onClick = [&]()
     {
+        /*
+            Moonbase API member activation UI visibility
+
+            Use this macro to show the activation UI on user interaction like the click of a button.
+        */
         MOONBASE_SHOW_ACTIVATION_UI;
     };
 
@@ -35,6 +40,12 @@ void MoonbasePluginDemoAudioProcessorEditor::paint (juce::Graphics& g)
 
 void MoonbasePluginDemoAudioProcessorEditor::resized()
 {
+    /*
+        Moonbase Activation UI member resizing
+
+        Use this macro to make sure the activation UI always fits your plugin/app window.
+        
+    */
     MOONBASE_RESIZE_ACTIVATION_UI;
     
     Rectangle<int> activationUiButtonArea (250, 30);

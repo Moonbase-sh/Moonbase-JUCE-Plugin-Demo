@@ -29,6 +29,41 @@ MoonbasePluginDemoAudioProcessor::~MoonbasePluginDemoAudioProcessor()
 }
 
 //==============================================================================
+/*
+    Moonbase API implementation starts here
+*/
+void MoonbasePluginDemoAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+{
+    /*
+        Moonbase API member audio initialization
+
+        Use this macro to initialize the Moonbase API member for audio processing.
+    */
+    MOONBASE_PREPARE_TO_PLAY (sampleRate, samplesPerBlock);
+}
+
+void MoonbasePluginDemoAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+{
+    juce::ScopedNoDenormals noDenormals;
+    
+    // -- > Your audio processing goes here < -- //
+
+    /*
+        Moonbase API member audio processing
+
+        Use this macro to process audio with the Moonbase API member. 
+        It's important, that this is the last call in the processBlock method.
+        Having this post-process will ensure, that the audio cuts out periodically, 
+        if the plugin is not authorized. 
+    */
+    MOONBASE_PROCESS (buffer);
+}
+
+/*
+    Moonbase API implementation ends here
+*/
+
+//==============================================================================
 const juce::String MoonbasePluginDemoAudioProcessor::getName() const
 {
     return JucePlugin_Name;
@@ -90,16 +125,7 @@ void MoonbasePluginDemoAudioProcessor::changeProgramName (int index, const juce:
 {
 }
 
-//==============================================================================
-void MoonbasePluginDemoAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
-{
-    /*
-        Moonbase API member audio initialization
 
-        Use this macro to initialize the Moonbase API member for audio processing.
-    */
-    MOONBASE_PREPARE_TO_PLAY (sampleRate, samplesPerBlock);
-}
 
 void MoonbasePluginDemoAudioProcessor::releaseResources()
 {
@@ -132,22 +158,7 @@ bool MoonbasePluginDemoAudioProcessor::isBusesLayoutSupported (const BusesLayout
 }
 #endif
 
-void MoonbasePluginDemoAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
-{
-    juce::ScopedNoDenormals noDenormals;
-    
-    // -- > Your audio processing goes here < -- 
 
-    /*
-        Moonbase API member audio processing
-
-        Use this macro to process audio with the Moonbase API member. 
-        It's important, that this is the last call in the processBlock method.
-        Having this post-process will ensure, that the audio cuts out periodically, 
-        if the plugin is not authorized. 
-    */
-    MOONBASE_PROCESS (buffer);
-}
 
 //==============================================================================
 bool MoonbasePluginDemoAudioProcessor::hasEditor() const
