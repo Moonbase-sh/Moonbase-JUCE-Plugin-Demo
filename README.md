@@ -45,8 +45,8 @@ The config file for your project can be generated per product in your Moonbase a
 A Moonbase config file is a json formatted document, looking like this: 
 ```json
 {
-    "productId" : "juce-app-demo",
-    "licenseFileLocation" : "Moonbase/JUCE App Demo/license.mb",
+    "productId" : "juce-plugin-demo",
+    "licenseFileLocation" : "Moonbase/JUCE Plugin Demo/license.mb",
     "baseUrl" : "https://demo.moonbase.sh",
     "offlineUrl" : "https://demo.moonbase.sh/activate",
     "publicKey" : "YnFtM4FhAzk80Ehm....."
