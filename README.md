@@ -2,7 +2,7 @@
 
 ## Introduction
 This repository demonstrates implementation of the `moonbase_JUCEClient` module into a JUCE audio plugin. The module is a plug and play JUCE module for easy licensing integration within the Moonbase environment. 
-<br>[For more information on the module, click here.](https://github.com/Moonbase-sh/moonbase_JUCEClient)
+<br>[For more information on the module, click here.](https://moonbase.sh/docs/licensing/sdks/juce/)
 <br>
 
 ## Cloning the project
