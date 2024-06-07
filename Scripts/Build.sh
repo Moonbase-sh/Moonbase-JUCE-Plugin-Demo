@@ -27,14 +27,28 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 
 elif [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "msys" ]]; then
+    source "$BASEDIR/Scripts/SetupDevEnv.sh" || exit $?
     PROJUCER="$BASEDIR/Submodules/JUCE/extras/Projucer/Builds/VisualStudio2022/x64/Release/App/Projucer.exe"
-    BUILD_CMD="MSBuild.exe \"${PRODUCTNAME}_SharedCode.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
-    BUILD_CMD+=" && MSBuild.exe \"${PRODUCTNAME}_VST3ManifestHelper.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
-    BUILD_CMD+=" && MSBuild.exe \"${PRODUCTNAME}_VST3.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
-   
-    if [ $DO_STANDALONE_BUILD -eq 1 ]; then
-        BUILD_CMD+=" && MSBuild.exe \"${PRODUCTNAME}_StandalonePlugin.vcxproj\" -p:Configuration=$BUILD_CONF -p:Platform=x64"
+    
+    LOG_FILE="$BASEDIR/buildlog.txt"
+    if [ -f "$LOG_FILE" ]; then
+        rm "$LOG_FILE"
     fi
+    touch "$LOG_FILE"
+    # Start a background process to tail the log file
+    tail -f "$LOG_FILE" &
+
+
+    # Store the PID of the tail process
+    TAIL_PID=$!
+
+    function killLogTail() {
+        echo "Killing log tail process $TAIL_PID and removing log file $LOG_FILE"
+        kill $TAIL_PID
+        rm "$LOG_FILE"
+    }
+
+    BUILD_CMD="\"$DEV_ENV_EXE\" \"${PRODUCTNAME}.sln\" -Build \"$BUILD_CONF|x64\" -Out \"$LOG_FILE\""
 else
   echo "Error: This script can only be run on macOS or Windows"
   exit 1
@@ -61,6 +75,10 @@ cd "$BASEDIR"
 RED=$(tput setaf 9; tput bold)
 GREEN=$(tput setaf 10; tput bold)
 RESET=$(tput sgr0)
+
+if [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "msys" ]]; then
+    killLogTail
+fi
 
 if [ $returnVal -eq 0 ]; then
 	echo "$GREEN**************** BUILD SUCCESSFUL ****************$RESET"
