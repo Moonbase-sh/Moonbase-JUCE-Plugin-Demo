@@ -14,11 +14,14 @@
 
 //==============================================================================
 /**
+ * 
+ * WEB UI Notes:
+ * 
  * The default demo integration uses the Moonbase::JUCEClient::ActivationUI juce::Component class to show the activation UI.
  * 
  * The Moonbase::JUCEClient::API offers WebUI helper classes, that can be utilized to show a web-based activation UI. An example integration is provided at Source/VueUI, which requires yarn as package manager. In order to use the WebUI demo instead of the default demo:
  
- - set the USE_WEB_UI flag below to 1.
+ - set the ENABLE_WEBUI_HELPERS in the moonbase_JUCEClient module to 1 (you can do so in the Projucer UI or by editing the module file)
  - use terminal to navigate to Source/VueUI
  - run 'yarn'
  - run 'yarn dev'
@@ -26,9 +29,14 @@
 
  Development Server Port:
  The JUCE WebBrowserComponent integration can be found in the PluginEditor class. It tries to open the UI at http://localhost:5173 by default. Should your UI server run on a different port, you can adjust the port in the PluginEditor constructor.
-
 */
-#define USE_WEB_UI 0
+#define USE_WEB_UI ENABLE_WEBUI_HELPERS
+#if JUCE_WINDOWS
+#if USE_WEB_UI
+    #pragma comment(lib, "../../WebView2/1.0.1901.177/build/native/x64/WebView2LoaderStatic.lib")   
+#endif
+#endif
+
 
 
 //==============================================================================
@@ -42,11 +50,7 @@
 #define ANIMATE_COMPANY_LOGO 0
 
 
-#if JUCE_WINDOWS
-#if USE_WEB_UI
-    #pragma comment(lib, "../../WebView2/1.0.1901.177/build/native/x64/WebView2LoaderStatic.lib")   
-#endif
-#endif
+
 
 class CompanyLogo : public Component, 
                     private Timer
