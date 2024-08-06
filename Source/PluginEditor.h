@@ -28,8 +28,7 @@
  The JUCE WebBrowserComponent integration can be found in the PluginEditor class. It tries to open the UI at http://localhost:5173 by default. Should your UI server run on a different port, you can adjust the port in the PluginEditor constructor.
 
 */
-#define USE_WEB_UI 1
-
+#define USE_WEB_UI 0
 
 
 //==============================================================================
@@ -41,6 +40,13 @@
 */
 
 #define ANIMATE_COMPANY_LOGO 0
+
+
+#if JUCE_WINDOWS
+#if USE_WEB_UI
+    #pragma comment(lib, "../../WebView2/1.0.1901.177/build/native/x64/WebView2LoaderStatic.lib")   
+#endif
+#endif
 
 class CompanyLogo : public Component, 
                     private Timer

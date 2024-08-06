@@ -27,6 +27,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 
 elif [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "msys" ]]; then
+
+    powershell -ExecutionPolicy Bypass -File "$BASEDIR/Scripts/InstallWebview2.ps1" || exit $?
+
     source "$BASEDIR/Scripts/SetupDevEnv.sh" || exit $?
     PROJUCER="$BASEDIR/Submodules/JUCE/extras/Projucer/Builds/VisualStudio2022/x64/Release/App/Projucer.exe"
     
@@ -73,7 +76,7 @@ returnVal=$?
 cd "$BASEDIR"
 
 RED=$(tput setaf 9; tput bold)
-GREEN=$(tput setaf 10; tput bold)
+GREEN=$(tput setaf {10}; tput bold)
 RESET=$(tput sgr0)
 
 if [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "msys" ]]; then
