@@ -21,7 +21,7 @@
  * 
  * The Moonbase::JUCEClient::API offers WebUI helper classes, that can be utilized to show a web-based activation UI. An example integration is provided at Source/VueUI, which requires yarn as package manager. In order to use the WebUI demo instead of the default demo:
  
- - set the ENABLE_WEBUI_HELPERS in the moonbase_JUCEClient module to 1 (you can do so in the Projucer UI or by editing the module file)
+ - set the USE_WEB_UI below to 1
  - use terminal to navigate to Source/VueUI
  - run 'yarn'
  - run 'yarn dev'
@@ -29,12 +29,13 @@
 
  Development Server Port:
  The JUCE WebBrowserComponent integration can be found in the PluginEditor class. It tries to open the UI at http://localhost:5173 by default. Should your UI server run on a different port, you can adjust the port in the PluginEditor constructor.
+
+  See the demo Projucer project and ./Scripts/Build.sh for more information.
 */
-#define USE_WEB_UI ENABLE_WEBUI_HELPERS
+#define USE_WEB_UI 0
+
 #if JUCE_WINDOWS
-#if USE_WEB_UI
-    #pragma comment(lib, "../../WebView2/1.0.1901.177/build/native/x64/WebView2LoaderStatic.lib")   
-#endif
+#pragma comment(lib, "../../WebView2/1.0.1901.177/build/native/x64/WebView2LoaderStatic.lib")   
 #endif
 
 
