@@ -1,0 +1,123 @@
+.noSelect
+{
+  -webkit-touch-callout:none; /* iOS Safari */
+  -webkit-user-select:none;   /* Chrome/Safari/Opera */
+  -khtml-user-select:none;    /* Konqueror */
+  -moz-user-select:none;      /* Firefox */
+  -ms-user-select:none;       /* Internet Explorer/Edge */
+  user-select:none;           /* Non-prefixed version */
+}
+
+.allowSelect
+{
+  -webkit-touch-callout:text; /* iOS Safari */
+  -webkit-user-select:text;   /* Chrome/Safari/Opera */
+  -khtml-user-select:text;    /* Konqueror */
+  -moz-user-select:text;      /* Firefox */
+  -ms-user-select:text;       /* Internet Explorer/Edge */
+  user-select:text;           /* Non-prefixed version */
+}
+
+.allowSelectOneClick
+{
+  -webkit-touch-callout:all; /* iOS Safari */
+  -webkit-user-select:all;   /* Chrome/Safari/Opera */
+  -khtml-user-select:all;    /* Konqueror */
+  -moz-user-select:all;      /* Firefox */
+  -ms-user-select:all;       /* Internet Explorer/Edge */
+  user-select:all;           /* Non-prefixed version */
+}
+
+.fade-enter-active,
+.fade-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 0.7s;
+  position: absolute;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0 !important;
+}
+
+.slide-left-enter-from,
+.slide-right-leave-active {
+  opacity: 0 !important;
+  transform: translate(100vw 0) !important;
+}
+
+.slide-left-leave-active,
+.slide-right-enter-from {
+  opacity: 0 !important;
+  transform: translate(-100vw, 0) !important;
+}
+.absolute-centered-x {
+    left: 50%;
+    transform: translateX(-50%);
+}
+ 
+.absolute-centered-y {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.absolute-centered {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.snap {
+    transition-duration: 0s !important;
+}
+
+html { 
+    overflow-y: hidden !important;
+}
+
+img {
+    pointer-events: none;
+}
+
+button {
+    padding: 0;
+}
+
+h4 {
+    margin: 0;
+}
+
+.slider-vertical {
+    -webkit-appearance: slider-vertical;
+    appearance: slider-vertical;
+    writing-mode: bt-lr; /* for Firefox */
+  }
+  
+  .slider-vertical::-webkit-slider-runnable-track {
+    /* Add specific styles for the slider track if needed */
+  }
+  
+  .slider-vertical::-webkit-slider-thumb {
+    /* Add specific styles for the slider thumb if needed */
+  }
+  
+  .slider-vertical::-moz-range-track {
+    /* Add specific styles for the slider track if needed */
+  }
+  
+  .slider-vertical::-moz-range-thumb {
+    /* Add specific styles for the slider thumb if needed */
+  }
+  
+  .slider-vertical::-ms-track {
+    /* Add specific styles for the slider track if needed */
+  }
+  
+  .slider-vertical::-ms-thumb {
+    /* Add specific styles for the slider thumb if needed */
+  }

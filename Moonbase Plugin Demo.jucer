@@ -4,7 +4,7 @@
               useAppConfig="1" addUsingNamespaceToJuceHeader="1" jucerFormatVersion="1"
               companyName="Demo Co." companyWebsite="https://moonbase.sh" displaySplashScreen="1"
               pluginFormats="buildAU,buildStandalone,buildVST3" pluginManufacturerCode="Moon"
-              pluginCode="PlgD">
+              pluginCode="PlgD" cppLanguageStandard="20">
   <MAINGROUP id="lfn1cF" name="Moonbase Plugin Demo">
     <GROUP id="{2D8D8BBD-958A-ECE7-E1CA-21305699B114}" name="Assets">
       <FILE id="MV1oH6" name="MoonbaseLogo.svg" compile="0" resource="1"

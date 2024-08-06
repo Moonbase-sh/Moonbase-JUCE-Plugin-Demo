@@ -11,6 +11,27 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 
+
+//==============================================================================
+/**
+ * The default demo integration uses the Moonbase::JUCEClient::ActivationUI juce::Component class to show the activation UI.
+ * 
+ * The Moonbase::JUCEClient::API offers WebUI helper classes, that can be utilized to show a web-based activation UI. An example integration is provided at Source/VueUI, which requires yarn as package manager. In order to use the WebUI demo instead of the default demo:
+ 
+ - set the USE_WEB_UI flag below to 1.
+ - use terminal to navigate to Source/VueUI
+ - run 'yarn'
+ - run 'yarn dev'
+ - Once the UI server is running hit F5 to start the plugin standalone demo.  
+
+ Development Server Port:
+ The JUCE WebBrowserComponent integration can be found in the PluginEditor class. It tries to open the UI at http://localhost:5173 by default. Should your UI server run on a different port, you can adjust the port in the PluginEditor constructor.
+
+*/
+#define USE_WEB_UI 1
+
+
+
 //==============================================================================
 /**
  * The default moonbase ui integration allows to set a company logo as a component, 
@@ -79,5 +100,12 @@ private:
 
     TextButton showActivationUiButton { "Show Activation UI" };
 
+    #if USE_WEB_UI
+        //make sure to add the WebBrowserComponent after initializing WebBrowserOptions member
+        Moonbase::JUCEClient::WebBrowserOptions browserOptions;
+        WebBrowserComponent webBrowser; 
+    #endif
+
+    JUCE_DECLARE_WEAK_REFERENCEABLE (MoonbasePluginDemoAudioProcessorEditor)
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MoonbasePluginDemoAudioProcessorEditor)
 };

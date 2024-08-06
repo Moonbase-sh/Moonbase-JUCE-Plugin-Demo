@@ -47,47 +47,74 @@ void CompanyLogo::paint (Graphics& g)
     if (logo != nullptr)
         logo->drawWithin (g, area, RectanglePlacement::centred, 1.0f);
 }
+
+//==============================================================================
+//==============================================================================
+#if USE_WEB_UI
+    
+
+
+        
+
+
+#endif
+
 //==============================================================================
 //==============================================================================
 MoonbasePluginDemoAudioProcessorEditor::MoonbasePluginDemoAudioProcessorEditor (MoonbasePluginDemoAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+: 
+AudioProcessorEditor (&p), 
+audioProcessor (p)
+#if USE_WEB_UI
+, browserOptions (*audioProcessor.moonbaseClient, webBrowser)
+, webBrowser (browserOptions)
+#endif
 {
-    addAndMakeVisible (showActivationUiButton);
-    showActivationUiButton.onClick = [&]()
-    {
-        /*
-            Moonbase API member activation UI visibility
-
-            Use this macro to show the activation UI on user interaction like the click of a button.
-        */
-        MOONBASE_SHOW_ACTIVATION_UI;
-    };
-
-    /*
-        Moonbase Activation UI member initialization
-
-        Use this macro to initialize the Moonbase Activation UI details.
-    */
-    jassert (activationUI != nullptr);
-    if (activationUI != nullptr)
-    {
-        // There are a max of 2 lines of text on the welcome screen, define them here
-        activationUI->setWelcomePageText ("Weightless", "License Management");
-
-        // Set the spinner logo, this is the little icon inside the spinner, when waiting for web responses
-        activationUI->setSpinnerLogo (Drawable::createFromImageData (BinaryData::MoonbaseLogo_svg, 
-                                                                     BinaryData::MoonbaseLogo_svgSize));
-
-        // Scale the spinner logo as required for your asset if needed. See Submodules/moonbase_JUCEClient/Assets/Source/SVG/OverlayAssets for ideal assets.
-        // activationUI->setSpinnerLogoScale (0.5f);
+    #if USE_WEB_UI
+        addAndMakeVisible (webBrowser);
         
-        // Set the company logo, this is the logo that is displayed on the welcome screen and the activated info screen
-        activationUI->setCompanyLogo (std::make_unique<CompanyLogo> ());
+        // first start your local development server by running 'yarn && yarn dev' in "Source/VueUI"
+        // you might have to adjust your port according to your local development server
+        webBrowser.goToURL ("http://localhost:5173");
 
-        // Scale the company logo as required for your asset if needed. 
-        // activationUI->setCompanyLogoScale ((0.25f));
-       
-    }
+    #else
+        addAndMakeVisible (showActivationUiButton);
+        showActivationUiButton.onClick = [&]()
+        {
+            /*
+                Moonbase API member activation UI visibility
+
+                Use this macro to show the activation UI on user interaction like the click of a button.
+            */
+            MOONBASE_SHOW_ACTIVATION_UI;
+        };
+
+        /*
+            Moonbase Activation UI member initialization
+
+            Use this macro to initialize the Moonbase Activation UI details.
+        */
+        jassert (activationUI != nullptr);
+        if (activationUI != nullptr)
+        {
+            // There are a max of 2 lines of text on the welcome screen, define them here
+            activationUI->setWelcomePageText ("Weightless", "License Management");
+
+            // Set the spinner logo, this is the little icon inside the spinner, when waiting for web responses
+            activationUI->setSpinnerLogo (Drawable::createFromImageData (BinaryData::MoonbaseLogo_svg, 
+                                                                        BinaryData::MoonbaseLogo_svgSize));
+
+            // Scale the spinner logo as required for your asset if needed. See Submodules/moonbase_JUCEClient/Assets/Source/SVG/OverlayAssets for ideal assets.
+            // activationUI->setSpinnerLogoScale (0.5f);
+            
+            // Set the company logo, this is the logo that is displayed on the welcome screen and the activated info screen
+            activationUI->setCompanyLogo (std::make_unique<CompanyLogo> ());
+
+            // Scale the company logo as required for your asset if needed. 
+            // activationUI->setCompanyLogoScale ((0.25f));
+        
+        }
+    #endif
 
     setSize (800, 600);
 }
@@ -105,15 +132,22 @@ void MoonbasePluginDemoAudioProcessorEditor::paint (juce::Graphics& g)
 
 void MoonbasePluginDemoAudioProcessorEditor::resized()
 {
-    /*
-        Moonbase Activation UI member resizing
+    #if USE_WEB_UI
+        webBrowser.setBounds (getLocalBounds ());
+    #else
 
-        Use this macro to make sure the activation UI always fits your plugin/app window.
-        
-    */
-    MOONBASE_RESIZE_ACTIVATION_UI;
+        /*
+            Moonbase Activation UI member resizing
 
-    Rectangle<int> activationUiButtonArea (250, 30);
-    activationUiButtonArea.setCentre (getLocalBounds ().getCentre ());
-    showActivationUiButton.setBounds (activationUiButtonArea);
+            Use this macro to make sure the activation UI always fits your plugin/app window.
+            
+        */
+        MOONBASE_RESIZE_ACTIVATION_UI;
+
+        Rectangle<int> activationUiButtonArea (250, 30);
+        activationUiButtonArea.setCentre (getLocalBounds ().getCentre ());
+        showActivationUiButton.setBounds (activationUiButtonArea);
+    #endif
 }
+
+
